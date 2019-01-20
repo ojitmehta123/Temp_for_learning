@@ -13,13 +13,13 @@ from obstacle_expander.msg import Ipoly,Exp_msg,Cordi#for polygon conversion
 #for decreasing the coordinate val 
 def decrease_in_direction(val): 
 	if val!="inf":
-		val-=0.1 #change this vaue according to bot size
+		val-=0.5 #change this vaue according to bot size
 	return val
 
 #for increasing the coordinate val
 def increase_in_direction(val):
 	if val!="inf":
-		val+=0.2 #-4 because the value is changed in decrease_in_direction
+		val+=1.0 #-4 because the value is changed in decrease_in_direction
 	return val
 
 

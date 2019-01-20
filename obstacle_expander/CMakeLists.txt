@@ -8,12 +8,13 @@ project(obstacle_expander)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  message_generation
-  message_runtime
+  nav_msgs
+  geometry_msgs
   rospy
   sensor_msgs
-  geometry_msgs
-  jsk_recognition_msgs
+  std_msgs
+  message_generation
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,14 +51,13 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   this.msg
-   Exp_msg.msg
-   Cordi.msg
-   Ipoly.msg
+add_message_files(
+  FILES
+  Cordi.msg
+  Exp_msg.msg
+  Ipoly.msg
 #   Message2.msg
- )
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -76,9 +76,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
+   geometry_msgs
    sensor_msgs
    std_msgs
-   obstacle_expander
+   
  )
 
 ################################################
@@ -113,7 +114,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES obstacle_expander
-#  CATKIN_DEPENDS message_generation message_runtime rospy sensor_msgs
+  CATKIN_DEPENDS geometry_msgs rospy sensor_msgs std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
